@@ -88,6 +88,7 @@
                     </div>
                     <button onclick="kirimPresensi()" id="btn-presensi" class="w-full mt-6 py-4 bg-rose-800 text-white rounded-2xl font-bold text-xs uppercase">KIRIM PRESENSI</button>
                 </div>
+                
                 <div id="presensi-success" class="hidden-el text-center py-6">
                 <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">✓</div>
                 <h3 class="text-lg font-bold text-slate-800">Presensi Terverifikasi</h3>
@@ -98,7 +99,7 @@
                     <div class="flex justify-between text-xs"><span class="text-slate-400">Status</span><span id="succ-status" class="font-bold text-green-600"></span></div>
                 </div>
                 <button onclick="location.reload()" class="mt-6 w-full py-3 bg-rose-700 text-white rounded-xl font-bold text-xs shadow-lg hover:bg-rose-800 transition-colors">KEMBALI KE PRESENSI</button>
-            </div>
+                </div>
             </div>
         </div>
 
@@ -141,17 +142,18 @@
                             <span class="job-tag" onclick="toggleTag(this)">Panitia Program</span>
                             <span class="job-tag" onclick="toggleTag(this)">Lainnya</span>
                         </div>
-                    </div>
+                </div>
                     <div><label class="field-label">Laporan Jurnal</label><textarea id="j-isi" rows="4" class="input-style" placeholder="Tuliskan detail aktivitas..."></textarea></div>
                     <button onclick="kirimJurnal()" id="btn-jurnal" class="w-full mt-6 py-4 bg-blue-600 text-white rounded-2xl font-bold text-xs uppercase">SIMPAN JURNAL</button>
                 </div>
-                 <div id="jurnal-success" class="hidden-el text-center py-12 px-6">
-                <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner">✨</div>
-                <h3 class="text-xl font-black text-slate-800">Jurnal Tersimpan!</h3>
-                <p class="text-sm text-slate-500 mt-2">Laporan aktivitas Anda telah tersimpan di sistem</p>
-                <button onclick="location.reload()" class="mt-8 w-full py-4 bg-slate-900 text-white rounded-2xl font-bold text-xs uppercase shadow-xl hover:bg-slate-800 transition-all">BUAT JURNAL BARU</button>
+                
+                <div id="jurnal-success" class="hidden-el text-center py-12 px-6">
+                    <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner">✨</div>
+                    <h3 class="text-xl font-black text-slate-800">Jurnal Tersimpan!</h3>
+                    <p class="text-sm text-slate-500 mt-2">Laporan aktivitas Anda telah tersimpan di sistem</p>
+                    <button onclick="location.reload()" class="mt-8 w-full py-4 bg-slate-900 text-white rounded-2xl font-bold text-xs uppercase shadow-xl hover:bg-slate-800 transition-all">BUAT JURNAL BARU</button>
                 </div>
-            </div>
+                
         </div>
     </div>
 
@@ -265,7 +267,7 @@
             btn.innerText = "MENGIRIM...";
             const data = { nama, unit: document.getElementById('p-unit').value, jabatan, status: document.getElementById('p-status').value, lokasi: mapLink };
             try {
-                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyoVY9HzzTIHcVIEqrDN-HKuUYOd2HbPEWAOqBrPg-cqjIi7eMmPotCL9P3ZHVx-pKh/exec';
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyeZtdJP61Im-S_nuHG1b_QJgY8c7n8PpP3ZIc-HT-AVDIixqE-kckYuskOM0H9R7kP/exec';
                 await fetch(scriptUrl, { method: 'POST', body: JSON.stringify(data) });
                 alert('Presensi Berhasil!'); location.reload();
             } catch(e) { alert('Gagal!'); btn.innerText = "KIRIM PRESENSI"; }
@@ -288,7 +290,7 @@
             btn.innerText = "MENGIRIM...";
             const data = { nama, unit: document.getElementById('j-unit').value, jabatan, tglMulai, tglSelesai, kategori: tags.join(', '), isi };
             try {
-                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyoVY9HzzTIHcVIEqrDN-HKuUYOd2HbPEWAOqBrPg-cqjIi7eMmPotCL9P3ZHVx-pKh/exec';
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyeZtdJP61Im-S_nuHG1b_QJgY8c7n8PpP3ZIc-HT-AVDIixqE-kckYuskOM0H9R7kP/exec';
                 await fetch(scriptUrl, { method: 'POST', body: JSON.stringify(data) });
                 alert('Jurnal Tersimpan!'); location.reload();
             } catch(e) { alert('Gagal!'); btn.innerText = "SIMPAN JURNAL"; }
