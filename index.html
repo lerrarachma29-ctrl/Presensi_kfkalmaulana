@@ -262,15 +262,46 @@
             const nama = document.getElementById('p-nama').value;
             const jabatan = document.getElementById('p-jabatan').value;
             const mapLink = document.getElementById('p-mapLink').value;
+            const status = document.getElementById('p-status').value;
+            
+            // Mengambil detail tambahan jika status adalah izin
+            let detailIzin = "";
+            if (status === 'izin') {
+                const jenisIzin = document.getElementById('p-izin-detail').value;
+                detailIzin = (jenisIzin === 'lainnya') 
+                    ? document.getElementById('p-alasan-lainnya').value 
+                    : jenisIzin;
+            }
+
             if(!nama || !jabatan || !mapLink) { alert('Mohon isi Nama, Jabatan, dan lokasi!'); return; }
+            
             const btn = document.getElementById('btn-presensi');
             btn.innerText = "MENGIRIM...";
-            const data = { nama, unit: document.getElementById('p-unit').value, jabatan, status: document.getElementById('p-status').value, lokasi: mapLink };
+            
+            // Menambahkan detailIzin ke dalam objek data
+            const data = { 
+                nama, 
+                unit: document.getElementById('p-unit').value, 
+                jabatan, 
+                status, 
+                detailIzin, 
+                lokasi: mapLink 
+            };
+            
             try {
                 const scriptUrl = 'https://script.google.com/macros/s/AKfycbyeZtdJP61Im-S_nuHG1b_QJgY8c7n8PpP3ZIc-HT-AVDIixqE-kckYuskOM0H9R7kP/exec';
                 await fetch(scriptUrl, { method: 'POST', body: JSON.stringify(data) });
-                alert('Presensi Berhasil!'); location.reload();
-            } catch(e) { alert('Gagal!'); btn.innerText = "KIRIM PRESENSI"; }
+                
+                // Menampilkan sukses
+                document.getElementById('presensi-form-content').classList.add('hidden-el');
+                document.getElementById('presensi-success').classList.remove('hidden-el');
+                document.getElementById('succ-nama').innerText = nama;
+                document.getElementById('succ-waktu').innerText = new Date().toLocaleTimeString();
+                document.getElementById('succ-status').innerText = status;
+            } catch(e) { 
+                alert('Gagal mengirim data. Pastikan koneksi internet stabil.'); 
+                btn.innerText = "KIRIM PRESENSI"; 
+            }
         }
 
         async function kirimJurnal() {
