@@ -88,6 +88,17 @@
                     </div>
                     <button onclick="kirimPresensi()" id="btn-presensi" class="w-full mt-6 py-4 bg-rose-800 text-white rounded-2xl font-bold text-xs uppercase">KIRIM PRESENSI</button>
                 </div>
+                <div id="presensi-success" class="hidden-el text-center py-6">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">✓</div>
+                <h3 class="text-lg font-bold text-slate-800">Presensi Terverifikasi</h3>
+                <p class="text-[11px] text-slate-400 uppercase font-bold tracking-widest mt-1">Data telah dikirim ke sistem</p>
+                <div class="mt-6 bg-slate-50 border border-slate-100 rounded-2xl p-4 text-left space-y-2">
+                    <div class="flex justify-between text-xs"><span class="text-slate-400">Nama</span><span id="succ-nama" class="font-bold"></span></div>
+                    <div class="flex justify-between text-xs"><span class="text-slate-400">Waktu</span><span id="succ-waktu" class="font-bold"></span></div>
+                    <div class="flex justify-between text-xs"><span class="text-slate-400">Status</span><span id="succ-status" class="font-bold text-green-600"></span></div>
+                </div>
+                <button onclick="location.reload()" class="mt-6 w-full py-3 bg-rose-700 text-white rounded-xl font-bold text-xs shadow-lg hover:bg-rose-800 transition-colors">KEMBALI KE PRESENSI</button>
+            </div>
             </div>
         </div>
 
@@ -133,6 +144,12 @@
                     </div>
                     <div><label class="field-label">Laporan Jurnal</label><textarea id="j-isi" rows="4" class="input-style" placeholder="Tuliskan detail aktivitas..."></textarea></div>
                     <button onclick="kirimJurnal()" id="btn-jurnal" class="w-full mt-6 py-4 bg-blue-600 text-white rounded-2xl font-bold text-xs uppercase">SIMPAN JURNAL</button>
+                </div>
+                 <div id="jurnal-success" class="hidden-el text-center py-12 px-6">
+                <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner">✨</div>
+                <h3 class="text-xl font-black text-slate-800">Jurnal Tersimpan!</h3>
+                <p class="text-sm text-slate-500 mt-2">Laporan aktivitas Anda telah tersimpan di sistem</p>
+                <button onclick="location.reload()" class="mt-8 w-full py-4 bg-slate-900 text-white rounded-2xl font-bold text-xs uppercase shadow-xl hover:bg-slate-800 transition-all">BUAT JURNAL BARU</button>
                 </div>
             </div>
         </div>
